@@ -1,10 +1,10 @@
 (function(){
-    function HomeCtrl($scope) {
- 
+    function HomeCtrl() {
+
     }
         
     angular 
         .module('stocktrader')
-        .controller('HomeCtrl', ['$scope', HomeCtrl]);
+        .controller('HomeCtrl', HomeCtrl);
     
 })();
