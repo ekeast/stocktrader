@@ -5,7 +5,8 @@
            password: null
        };
         
-       $scope.login = Auth.signIn($scope.newUser);
+//       $scope.login = Auth.signIn($scope.newUser);
+        $scope.authorize = Auth;
         
     }
         
