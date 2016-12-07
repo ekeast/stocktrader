@@ -3,24 +3,19 @@
        var Auth = {};
         
         
-       var newUser = {
-           email: null,
-           password: null
-       };
-        
         var loggedIn = false;
         
         var currentUser = null;
         
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-            $scope.loggedIn = true;
+            loggedIn = true;
             console.log("User is logged in");
             console.log(user.email);
             currentUser = user;
 
           } else {
-            $scope.loggedIn = false;
+            loggedIn = false;
             console.log("User is not logged in");
           }
         });
@@ -32,24 +27,17 @@
                     alert(error.message);
             });
 
-            newUser = {
-               email: null,
-               password: null
-            };    
+
         };
         
-        Auth.signIn = function(newUser) {
-            firebase.auth().signInWithEmailAndPassword(newUser.email, newUser.password).catch(function(error) {
+        Auth.signIn = function(user) {
+            firebase.auth().signInWithEmailAndPassword(user.email, user.password).catch(function(error) {
               // Handle Errors here.
                 console.log(error.message);
                 alert(error.message);
               
             });
             
-            newUser = {
-               email: null,
-               password: null
-            };  
         };
         
         
@@ -67,4 +55,4 @@
     angular 
         .module('stocktrader')
         .factory('Auth', Auth);
- })
+ })();
