@@ -23,9 +23,9 @@
         $stateProvider 
             .state('home', {
                 url: '/home',
-                controller: 'HomeCtrl as home',
+                controller: 'StockCtrl as home',
                 templateUrl: '/templates/home.html',
-                authenticate: true
+                authenticate: true            
             });
     } 
     

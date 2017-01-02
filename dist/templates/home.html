@@ -1,2 +1,24 @@
-<h1 style="margin-top:100px" ng-if="loggedIn">Welcome to StockTrader!</h1>
-<p ng-if="!loggedIn" style="margin-top:100px">You must be logged in to access this page.</p>
+<br>
+<br>
+<br>
+<form id="form1"  method="post" ng-controller="StockCtrl">
+		<div class="form-group">
+			<label>Ticker Symbol</label>
+			<input type="text" placeholder="Enter Symbol" class="form-control" name="symbol" ng-model="symbol" />
+		</div>
+
+		<div>
+			<button class="btn btn-primary" ng-click="getData()">Get Price</button>
+		</div>
+            <div ng-if="result.LastPrice != null"> 
+			<br/>
+	       	{{result.Name}} <br/>			
+	       	{{result.Exchange}} <br/>
+	       	{{result.MarketCap}} <br/>
+		    {{result.LastPrice}} <br/>
+	        {{result.PercentChange}} <br/>
+	        {{result.YearRange}} <br/>
+            <br/>
+            <p ng-if="result.LastPrice != null">Do you want to buy this stock at {{result.LastPrice}}?</p>
+            </div>
+</form>
