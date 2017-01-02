@@ -1,10 +1,10 @@
 (function(){
-    function HomeCtrl() {
-
+    function HomeCtrl(Auth) {
+        this.authorize = Auth;
     }
         
     angular 
         .module('stocktrader')
-        .controller('HomeCtrl', HomeCtrl);
+        .controller('HomeCtrl', ['Auth', HomeCtrl]);
     
 })();
