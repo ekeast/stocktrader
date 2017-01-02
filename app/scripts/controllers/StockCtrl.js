@@ -33,8 +33,8 @@
                     console.log("No Valid Results could be Returned!!")
                 }
                 else {
-                    
-                    $scope.newStock.price = data.query.results.quote.LastTradePriceOnly;
+                    $scope.newStock.symbol = data.query.results.quote.symbol;
+                    $scope.newStock.price = parseFloat(data.query.results.quote.LastTradePriceOnly);
                     $scope.result.Name = data.query.results.quote.Name;
                     $scope.result.Exchange = data.query.results.quote.StockExchange;
                     $scope.result.MarketCap = data.query.results.quote.MarketCapitalization;
@@ -54,13 +54,19 @@
     
         var portfolio = firebase.database();
 
-        $scope.buyStock = function(symbol, shares, price) {
-          portfolio.ref('stocks/').set({
-            symbol: newStock.symbol,
-            shares: newStock.shares, 
-            price: newStock.price
-          });
-        }
+        $scope.buyStock = function() {
+          $scope.newStock.shares = parseInt($scope.newStock.shares);
+          portfolio.ref('stocks/').push($scope.newStock);
+        
+          
+          console.log($scope.newStock.shares + " shares bought at " + $scope.newStock.price);
+            
+          $scope.newStock = {
+            symbol: null, 
+            price: null, 
+            shares: null
+          };
+        };
     
     }
         
